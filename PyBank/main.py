@@ -32,4 +32,18 @@ with open(csvpath, newline="") as csvfile:
     for row in csvreader:
         budget.append(row)
 
+# Set variables for finding the net total and Month Count
+# Count the rows starting from the second row
+# Sum all the net totals together
+Month_Count = 0
+Net_Total = 0
+for row in budget[1:]:
+    Month_Count +=1
+    Net_Total += int(row[1])
+
+
+# Make a list of the monthly totals to use for analyse
+Month_Total= [int(j) for i, j in budget[1:]]
+
+
 
