@@ -45,6 +45,7 @@ for row in budget[1:]:
 # Make a list of the monthly totals to use for analyse
 Month_Total= [int(j) for i, j in budget[1:]]
 
+
 # Zip the month total list to itself, one index ahead for one of the lists
 # Subtract, find the difference betweeen the zipped items
 Month_Change = [x - y for x, y in zip(Month_Total[1:], Month_Total)]
@@ -58,5 +59,36 @@ Month_Change = sum(Month_Change) / len(Month_Change)
 Month_List = [i for i, j in budget[1:]]
 
 
+# Zip the month names and month change list together
+# Account for the first month not having a recorded change
+Month_Change_List = [i for i in zip(Month_List[1:], Month_Change)]
+
+# Find the average of the items in the month change list
+Month_Change_Average = sum(Month_Change) / len(Month_Change)
 
 
+for row in Month_Change:
+    if row[1] == max(Month_Change):
+        Max_Month = row[0]
+        Max_Amount = row[1]
+    if row[1] == min(Month_Change):
+        Min_Month = row[0]
+        Min_Month = row = row[1]
+
+print("Financial Analysis")
+print("__________________")
+print(f"Total Months: {len(budget) - 1}")
+print(f"Total: ${Net_Total}")
+print(f"Average Change: ${round(Month_Change_Average, 2)}")
+print(f"Greatest Increase in Profits: {Max_Month} (${max(Month_Change)})")
+print(f"Greatest Decrease in Profits: {Min_Month} (${min(Month_Change)})")
+
+with open("FinancialAnalysis.txt", "a") as txt:
+    txt.write("Financial Analysis/n")
+    txt.write("----------------------------/n")
+    txt.write(f"Total Months: {len(budget) - 1}/n")
+    txt.write(f"Total: ${Net_Total}/n")
+    txt.write(f"Average  Change: ${round(Month_Change_Average, 2)}/n")
+    txt.write(f"Greatest Increase in Profits: {Max_Month} (${max(Month_Change)})/n")
+    txt.write(f"Greatest Decrease in Profits: {Min_Month} (${min(Month_Change)})/n")
+    txt.close()
