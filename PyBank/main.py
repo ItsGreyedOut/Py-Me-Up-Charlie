@@ -50,7 +50,13 @@ Month_Total= [int(j) for i, j in budget[1:]]
 Month_Change = [x - y for x, y in zip(Month_Total[1:], Month_Total)]
 
 
-#
+# Find the average of the items in the month change list
+Month_Change = sum(Month_Change) / len(Month_Change)
+
+
+# Create a list of the month names
+Month_List = [i for i, j in budget[1:]]
+
 
 
 
