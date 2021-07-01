@@ -45,5 +45,12 @@ for row in budget[1:]:
 # Make a list of the monthly totals to use for analyse
 Month_Total= [int(j) for i, j in budget[1:]]
 
+# Zip the month total list to itself, one index ahead for one of the lists
+# Subtract, find the difference betweeen the zipped items
+Month_Change = [x - y for x, y in zip(Month_Total[1:], Month_Total)]
+
+
+#
+
 
 
