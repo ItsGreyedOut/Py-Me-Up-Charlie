@@ -1,3 +1,8 @@
+# pybank python challenge
+# GT Python Homework 07032021
+
+
+# Time to begin, let's start with importing the OS and CSV file that we will use for this exercise analysis.
 import os
 import csv
 
